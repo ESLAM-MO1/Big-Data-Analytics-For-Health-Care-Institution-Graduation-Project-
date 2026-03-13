@@ -1,0 +1,20 @@
+# Django
+Django==4.2.29
+djangorestframework==3.14.0
+django-cors-headers==4.3.1
+
+# Database
+psycopg2-binary==2.9.9
+
+# ML & AI
+tensorflow==2.15.0
+scikit-learn==1.3.2
+joblib==1.3.2
+numpy==1.24.3
+pandas==2.1.4
+
+# Image Processing
+Pillow==10.1.0
+
+# Utilities
+python-decouple==3.8

@@ -1,0 +1,71 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.pyc
+
+# Virtual Environment
+venv/
+env/
+.env/
+ENV/
+
+# Environment Variables (مهم جداً - فيه passwords)
+.env
+*.env
+local_settings.py
+
+# Django
+*.log
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# ML Models (ملفات كبيرة)
+*.pkl
+*.keras
+*.h5
+*.pt
+*.pth
+app/backend/strocke_app/models/*.pkl
+app/backend/strocke_app/models/*.keras
+app/backend/strocke_app/models/*.h5
+app/backend/strocke_app/models/catboost_info/
+
+# Data & Images (ملفات كبيرة جداً)
+data/
+outputs/
+*.png
+*.jpg
+*.jpeg
+*.dcm
+
+# Notebooks
+*.ipynb
+
+# ngrok
+*.exe
+ngrok.exe
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Coverage
+.coverage
+htmlcov/
+
+# Distribution
+dist/
+build/
+*.egg-info/
