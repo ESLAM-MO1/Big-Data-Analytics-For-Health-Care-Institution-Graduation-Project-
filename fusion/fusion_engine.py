@@ -1,25 +1,20 @@
 def dynamic_fusion_v2(clinical_score, image_score=None, patient_data=None):
-    """
-    Enhanced Dynamic Late Fusion
-    Override Rules + Explainability
-    Based on Stroke Prediction Dataset
-    """
     contributing_factors = []
     overrides = []
 
-    # ─── STEP 1: Dynamic Late Fusion ───
+    # Late Fusion 
     if image_score is None:
         fused_score = clinical_score
         fusion_note = "Clinical model only (no imaging available)"
     else:
-        w_img  = image_score
-        w_clin = 1 - image_score
+        w_img  = 0.60
+        w_clin = 0.40
         fused_score = (w_img * image_score) + (w_clin * clinical_score)
         fusion_note = f"Fused: image={w_img:.0%}, clinical={w_clin:.0%}"
 
     final_score = fused_score
 
-    # ─── STEP 2: Override Rules ───
+    # Override Rules 
     if patient_data:
         bmi          = float(patient_data.get("BMI", 0))
         age_cat      = patient_data.get("AgeCategory", "")
@@ -86,15 +81,15 @@ def dynamic_fusion_v2(clinical_score, image_score=None, patient_data=None):
     else:
         explanation = fusion_note
 
-    # ─── STEP 4: Risk Stratification ───
+    # Risk Stratification 
     if final_score < 0.40:
-        risk_level     = "LOW"
+        risk_level     = "Low"
         recommendation = "Annual monitoring recommended."
     elif final_score < 0.70:
-        risk_level     = "MEDIUM"
+        risk_level     = "Medium"
         recommendation = "Follow-up within 3 months advised."
     else:
-        risk_level     = "HIGH"
+        risk_level     = "High"
         recommendation = "Immediate neurological evaluation required."
 
     return {
@@ -109,7 +104,7 @@ def dynamic_fusion_v2(clinical_score, image_score=None, patient_data=None):
 
 
 
-# EXAMPLE
+
 
 if __name__ == "__main__":
     patient = {
@@ -142,3 +137,4 @@ if __name__ == "__main__":
         bar = '█' * int(f['weight'] / 4)
         print(f"  {f['factor']:<28} {bar} {f['weight']}%")
     print("=" * 55)
+    

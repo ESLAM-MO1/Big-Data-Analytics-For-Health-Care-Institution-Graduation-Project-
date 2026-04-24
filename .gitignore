@@ -43,8 +43,7 @@ outputs/
 *.jpeg
 *.dcm
 
-# Notebooks
-*.ipynb
+
 
 # ngrok
 *.exe
